@@ -1,3 +1,9 @@
+# Archivos sueltos con nombre raro
+.envn
+env.
+*.json
+*.png
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -170,3 +176,24 @@ scratch*
 /mage_data*
 *secrets*.json
 your-first-project
+
+
+
+# Mage / Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.DS_Store
+
+# Mage data / cache
+mage_data/
+
+# Entornos y variables
+.env
+*.env
+*.env.*
+.env.*
+
+# Mage configs que pueden contener credenciales
+**/i0_config.yaml
