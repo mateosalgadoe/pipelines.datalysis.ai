@@ -1,0 +1,97 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - leads_cleaner_transformer
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: api loader
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: api_loader
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: posrgres exporter
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - leads_cleaner_transformer
+  uuid: posrgres_exporter
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - posrgres_exporter
+  - dim_leads_exporter
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: leads_cleaner_transformer
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - api_loader
+  uuid: leads_cleaner_transformer
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    schema: clean
+    table: dim_leads
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: dim_leads_exporter
+  retry_config:
+    delay: 5
+    exponential_backoff: false
+    max_delay: 60
+    retries: 3
+  status: executed
+  timeout: '300'
+  type: data_exporter
+  upstream_blocks:
+  - leads_cleaner_transformer
+  uuid: dim_leads_exporter
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2025-08-19 01:40:57.879024+00:00'
+data_integration: null
+description: null
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: rocknblock_leads
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+uuid: rocknblock_leads
+variables_dir: /home/src/mage_data/datalysis_pipelines
+widgets: []
