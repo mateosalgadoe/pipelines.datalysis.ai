@@ -3,7 +3,8 @@
 env.
 *.json
 *.png
-
+your_first_project/
+rocknblock_leads/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
